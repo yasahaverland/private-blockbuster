@@ -17,7 +17,8 @@ router.post('/', async (req, res) => {
         // create a new user
         const [newUser, created] = await db.user.findOrCreate({
             where: {
-                email: req.body.email
+                email: req.body.email,
+                user_name: req.body.user_name
             }, 
             defaults: {
                 password: hashedPassword

@@ -1,0 +1,13 @@
+<h1>Saved Favorites</h1>
+<% allFaves.forEach(fave => { %>
+    <h2><%= fave.title %></h2>
+    <img src="<%= fave.poster %>" />
+
+    <a href="/details/<%= fave.imdbid %>">details</a>
+
+    <div id="delete">
+        <form method="POST" action="/favorites/<%= fave.id%>/?_method=DELETE">
+            <input type="submit" value="Delete" />
+        </form>
+    </div>
+<% }) %>
