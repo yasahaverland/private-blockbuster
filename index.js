@@ -7,7 +7,6 @@ const db = require('./models')
 const crypto = require('crypto-js')
 const { default: axios } = require('axios');
 const methodOverride = require('method-override')
-const bootstrap = require('bootstrap')
 
 console.log('server secret:', process.env.ENC_SECRET)
 
@@ -45,7 +44,9 @@ app.use(async (req, res, next) => {
 app.get('/', (req, res) => {
     res.render('home.ejs')
 })
-
+app.get('/aboutus', (req, res) => {
+    res.render('about.ejs')
+})
 app.get('/results', (req, res) => {
         axios.get(`http://www.omdbapi.com/?s=${req.query.movieSearch}&apikey=${process.env.API_KEY}`)
           .then(response => {

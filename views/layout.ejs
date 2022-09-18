@@ -13,23 +13,26 @@
       </style>
 </head>
 <body>
-        <div class="dropdown show">
-            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Menu
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <!-- <% if (user) { %> -->
-              <a class="dropdown-item" href="/users/profile">Profile</a>
-              <a class="dropdown-item" href="/users/logout">Logout</a>
-              <!-- <% } else { %> -->
-              <a class="dropdown-item" href="/users/new">Sign Up</a>
-              <a class="dropdown-item" href="/users/login">Login</a>
-              <!-- <% } %>  -->
-            </div>
-          </div>
-          
-    <a href="/">home</a>
-    <h1>Hello user, welcome to the User App</h1>
+        <div class="header">
+            <h2>Private Blockbuster</h2>
+            <ul class="menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/aboutus">About us</a></li>
+              <% if (user) { %>
+                <li>
+                    <a href="/users/profile">Profile</a>
+                    <ul class="submenu1">
+                        <li><a href="/favorites">Your Favorites</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="/users/logout">Logout</a></li>
+              <% } else { %>
+                <li><a href="/users/new">Sign Up</a></li>
+                <li><a href="/users/login">Login</a></li>
+              <% } %> 
+            </ul>
+        </div>
 
     <%- body %>
 </body>
