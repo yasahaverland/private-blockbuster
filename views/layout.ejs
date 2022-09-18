@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/style.css"/>
     <title>Private Blockbuster</title>
     <style>
         body {
@@ -12,31 +13,22 @@
       </style>
 </head>
 <body>
-    <nav>
-        <a href="/">home</a>
-        <ul>
-            <!-- if the user is logged in... -->
-            <!-- all data in the res.locals is usuable in the layout -->
-            <% if (user) { %>
-                <li>
-                    <a href="/users/profile">Profile</a>
-                </li>
-
-                <li>
-                    <a href="/users/logout">Logout</a>
-                </li>
-            <% } else { %>
-                <li>
-                    <a href="/users/new">Sign Up</a>
-                </li>
-    
-                <li>
-                    <a href="/users/login">Login</a>
-                </li>
-            <% } %> 
-        </ul>
-    </nav>
-
+        <div class="dropdown show">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Menu
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <!-- <% if (user) { %> -->
+              <a class="dropdown-item" href="/users/profile">Profile</a>
+              <a class="dropdown-item" href="/users/logout">Logout</a>
+              <!-- <% } else { %> -->
+              <a class="dropdown-item" href="/users/new">Sign Up</a>
+              <a class="dropdown-item" href="/users/login">Login</a>
+              <!-- <% } %>  -->
+            </div>
+          </div>
+          
+    <a href="/">home</a>
     <h1>Hello user, welcome to the User App</h1>
 
     <%- body %>

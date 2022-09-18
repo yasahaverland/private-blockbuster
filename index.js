@@ -7,6 +7,7 @@ const db = require('./models')
 const crypto = require('crypto-js')
 const { default: axios } = require('axios');
 const methodOverride = require('method-override')
+const bootstrap = require('bootstrap')
 
 console.log('server secret:', process.env.ENC_SECRET)
 
@@ -19,6 +20,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(require('morgan')('dev'));
 app.use(methodOverride('_method'));
+app.use('/public', express.static('public'));
 // our custom auth middleware
 app.use(async (req, res, next) => {
     // console.log('hello from a middleware 👋')
@@ -64,8 +66,15 @@ app.get('/results', (req, res) => {
 // GET /FAVES -- Read all faves and display them to the user
 app.get('/favorites', async (req, res) => {
     try {
-      const allFaves = await db.fave.findAll()
-      res.render('faves.ejs', { allFaves })
+      const user = await db.user.findOne({
+        where: { email: res.locals.user.email }
+
+     })
+        const userFaves = await user.getFaves()
+        
+        const allComments = await db.comment.findAll()
+
+      res.render('faves.ejs', { userFaves, allComments})
     } catch(err) {
       console.log(err)
       res.send('server error')
@@ -74,11 +83,20 @@ app.get('/favorites', async (req, res) => {
   // POST /faves -- CREATE new fave and redirect to /faves to display user faves
 app.post('/favorites', async (req,res) => {
     try {
-      console.log(req.body)
-      // add the new fav to the db
-      await db.fave.create(req.body)
-      // redirect to the user's profile with their faves
-      res.redirect('/favorites')
+        const [fave, faveCreated] = await db.fave.findOrCreate({
+            where: {
+                title: req.body.title,
+                imdbid: req.body.imdbid,
+                poster: req.body.poster
+            }
+        })
+        const user = await db.user.findOne({
+            where: {
+                email: res.locals.user.email
+            }
+        })
+        await user.addFave(fave)
+      res.redirect('/favorites', )
     } catch(err) {
       console.log(err)
       res.send('server error')
@@ -87,14 +105,43 @@ app.post('/favorites', async (req,res) => {
 // delete faves
 app.delete('/favorites/:id', async (req,res) => {
     try {
-        const deleteFave = await db.fave.destroy({
-            where: {id: req.params.id }
+
+         const grabUser = await db.user.findOne({
+            where: { email: res.locals.user.email }
+        })
+        // const deleteFave = await db.fave.destroy({
+        //     where: { id: req.params.id }
+        // })
+        const deleteUserFaves = await db.user_faves.destroy({
+            where: { faveId: req.params.id,
+                     userId: grabUser.id}
+
+        })
+       
+        res.redirect('/favorites')
+    } catch(err){
+        console.log(err)
+    }
+})
+// comments
+app.post('/favorites/:id', async (req,res) => {
+    try {
+        const [comment, commentCreated] = await db.comment.findOrCreate({
+        
+        where:{
+            user_name: req.body.user_name,
+            content: req.body.content,
+            faveId: req.params.id,
+            userId: res.locals.user.id
+        }
+            
         })
         res.redirect('/favorites')
     } catch(err){
         console.log(err)
     }
 })
+
 // Controllers
 app.use('/users', require('./controllers/users'))
 

@@ -1,13 +1,40 @@
 <h1>Saved Favorites</h1>
-<% allFaves.forEach(fave => { %>
+<% userFaves.forEach(fave => { %>
     <h2><%= fave.title %></h2>
     <img src="<%= fave.poster %>" />
 
     <a href="/details/<%= fave.imdbid %>">details</a>
+   
+    <h3>Add a new comment:</h3>
+    <div class="comment-f">
+        <form method="POST" action="/favorites/<%= fave.id%>">
+        <label>User Name:</label>
+        <input type="text" name="user_name">
+        <label>Comment:</label>
+        <input type="text" name="content">
+        <input hidden value="<%= fave.id %>" type="text" name="id">
+        <input type="submit">
+        </form>
+    </div>
 
-    <div id="delete">
+    <h3>Comments</h3>
+
+    <% allComments.forEach(comment => { %>
+        <% if (comment.faveId = fave.id) { %>
+            <div class="coments">
+                <p> <%= comment.user_name %> </p>
+                <p> <%= comment.content %> </p>
+            </div>
+        <% } %>
+    <% }) %>
+   
+    <div class="delete">
         <form method="POST" action="/favorites/<%= fave.id%>/?_method=DELETE">
             <input type="submit" value="Delete" />
         </form>
     </div>
-<% }) %>
+
+ 
+<% }) %>  
+
+
