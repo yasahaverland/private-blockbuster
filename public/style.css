@@ -143,7 +143,32 @@ h1 {
 }
 
 .movie-poster img {
-    box-shadow: 20px 20px 15px #baf25a;
+    box-shadow: 20px 20px 20px #baf25a;
     width: 400px;
     height: 536;
+}
+
+/* details.ejs */
+
+.details {
+    background-color: #c7e9c1;
+    padding: 20px;
+    margin-top: 20px;
+    width: 40%;
+    margin-left: 30%;
+    color: #464a45;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+.faves {
+    font-size: 40px;
+    font-family: 'Nunito Sans', sans-serif;
+    padding: 10px;
+    margin: 15px;
+    background-color: #f0b2b4
+}
+.faves:hover {
+    box-shadow: 20px 20px 20px #FF5AAC;
+    background-color: #ff9cce
 }

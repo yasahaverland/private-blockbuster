@@ -1,32 +1,34 @@
 <h1>Saved Favorites</h1>
 <% userFaves.forEach(fave => { %>
-    <h2><%= fave.title %></h2>
-    <img src="<%= fave.poster %>" />
-
-    <a href="/details/<%= fave.imdbid %>">details</a>
-   
-    <h3>Add a new comment:</h3>
-    <div class="comment-f">
-        <form method="POST" action="/favorites/<%= fave.id%>">
-        <label>User Name:</label>
-        <input type="text" name="user_name">
-        <label>Comment:</label>
-        <input type="text" name="content">
-        <input hidden value="<%= fave.id %>" type="text" name="id">
-        <input type="submit">
-        </form>
+    <div class="details">
+        <h2><%= fave.title %></h2>
+       <div class="movie-poster" >
+            <img src="<%= fave.poster %>" />
+       </div>
+        <a href="/details/<%= fave.imdbid %>">details</a>
     </div>
+        <h3>Add a new comment:</h3>
+        <div class="comment-f">
+            <form method="POST" action="/favorites/<%= fave.id%>">
+            <label>User Name:</label>
+            <input type="text" name="user_name">
+            <label>Comment:</label>
+            <input type="text" name="content">
+            <input hidden value="<%= fave.id %>" type="text" name="id">
+            <input type="submit">
+            </form>
+        </div>
 
-    <h3>Comments</h3>
+        <h3>Comments</h3>
 
-    <% allComments.forEach(comment => { %>
-        <% if (comment.faveId = fave.id) { %>
-            <div class="coments">
-                <p> <%= comment.user_name %> </p>
-                <p> <%= comment.content %> </p>
-            </div>
-        <% } %>
-    <% }) %>
+        <% allComments.forEach(comment => { %>
+            <% if (comment.faveId = fave.id) { %>
+                <div class="coments">
+                    <p> <%= comment.user_name %> </p>
+                    <p> <%= comment.content %> </p>
+                </div>
+            <% } %>
+        <% }) %>
    
     <div class="delete">
         <form method="POST" action="/favorites/<%= fave.id%>/?_method=DELETE">
