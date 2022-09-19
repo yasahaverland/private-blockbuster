@@ -2,7 +2,6 @@
 body {
 
     background-image: url('https://i.imgur.com/GXWxlWi.png');
-    background-repeat: no-repeat;
     background-size: cover;
 
 }
@@ -93,6 +92,14 @@ h1 {
     height: 30px;
     border-radius: 100px;
     text-align:center;
+    border: 2px solid #adadad;
+    background: #ffffff;
+    outline: none;
+    transition: border-color 0.5s;
+}
+
+#search-bar:focus {
+    border-color: #FF5AAC;
 }
 .search {
 
@@ -103,7 +110,7 @@ h1 {
     width: 40px;
     height: 40px;
     padding: 10px;
-
+    cursor: pointer;
 }
 /* about.ejs */
 .big-box {
@@ -171,4 +178,108 @@ h1 {
 .faves:hover {
     box-shadow: 20px 20px 20px #FF5AAC;
     background-color: #ff9cce
+}
+
+/* login snd sign up form */
+
+
+.login-form, .login-form * {
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.login-form {
+    max-width: 350px;
+    margin: 30px auto;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 15px #00000070;
+}
+
+.login-form__logo-container {
+    padding: 30px;
+    background: #f0b2b4;
+
+}
+
+.login-form__logo{
+    display: block;
+    max-width: 275px;
+    margin: 0 auto;
+}
+
+.login-form_contetent {
+    padding: 30px;
+    background: #f5ebee;
+
+}
+
+.login-form__header {
+    margin-bottom: 15px;
+    text-align: center;
+    color: #464a45;
+}
+
+.login-form__input {
+    
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #cccdcc;
+    background: #ffffff;
+    outline: none;
+    transition: border-color 0.5s;
+}
+
+.login-form__input:focus {
+    border-color: #FF5AAC;
+}
+
+.login-form__input::placeholder {
+    color: #aaaaaa;
+} 
+
+.login-form__button {
+    padding: 10px;
+    color: #ffffff;
+    background-color: #baf25a;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.login-form__button:active {
+    background-color: #87b041;
+}
+
+/* profile */
+
+.title {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 40px;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+    font-family: 'Lobster', cursive;
+}
+
+#user-name {
+    color:#baf25a;
+}
+
+.about-you {
+    background-color: #f1c8beb0;
+    color:#ffffff;
+    font-family: 'Nunito Sans', sans-serif;
+    max-width: 70%;
+    height: 350px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 25px;
+    margin-left: 15%;
 }
