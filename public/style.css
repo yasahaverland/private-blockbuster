@@ -305,28 +305,62 @@ h1 {
 .movie-poster_box {
     background-color: #c7e9c1;
     padding: 20px;
-    margin-top: 20px;
-    width: 80%;
-    margin-left: 40%;
+    margin-top: 100px;
+    width: 400px;
+    height: 600px;
     color: #464a45;
     font-family: 'Nunito Sans', sans-serif;
     font-size: 15px;
     margin-bottom: 15px;
 }
+
+.details_button {
+    margin-top: 25px;
+    margin-left: 27px;
+    color: #ffffff;
+    background-color: #baf25a;
+    width: 310px;
+    height: 23px;
+    border: 2px solid #91ba4b;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 20px;
+    font-size: 15px;
+}
+.details_button a {
+    color:white;
+    font-family: 'Nunito Sans', sans-serif;
+}
+.delete button{
+    margin-top: 5px;
+    margin-left: -40px;
+    color: #ffffff;
+    background-color: #baf25a;
+    width: 310px;
+    height: 21px;
+    border: 2px solid #91ba4b;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 20px;
+    font-size: 15px;
+}
+
 /* comments */
 
+.comments-section {
+    width: 500px;
+    font-family: 'Nunito Sans', sans-serif;
+}
 .comment-box, .comment-box * {
     padding: 10px;
-    margin: 0;
     font-family: 'Nunito Sans', sans-serif;
 }
 
 .comment-box {
-    margin-top: 420px;
-    left:50%;
-    position: absolute;
+    margin-top: 250px;
+    margin-left: 250px;
     transform: translate(-50%, -50%);
-    width: 450px;
+    width: 500px;
     background-color:#c7e9c1;
     border-radius: 10px;
 }
@@ -378,10 +412,9 @@ h1 {
 .post-comments_box {
     display: block;
     margin-top: 100px;
-    left: 150px;
-    position: absolute;
+    left: 50px;
     transform: translate(-50%, -50%);
-    width: 600px;
+    width: 450px;
     background-color:#c7e9c1;
     border-radius: 10px;
 }
@@ -389,7 +422,6 @@ h1 {
 .post-comment_username {
     width: 100%;
     height: 40px;
-    padding: 0 20px;
     margin-bottom: 15px;
     border-radius: 5px;
     border: 2px solid #adadad;
@@ -399,9 +431,7 @@ h1 {
 .post-comment_content {
     text-align: start;
     width: 100%;
-    height: 110px;
-    padding: 0 20px;
-    margin-bottom: 15px;
+    height: 90px;
     border-radius: 5px;
     border: 2px solid #adadad;
     background-color:#def2da;

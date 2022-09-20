@@ -81,7 +81,7 @@ app.get('/favorites', async (req, res) => {
       res.send('server error')
     }
   })
-  // POST /faves -- CREATE new fave and redirect to /faves to display user faves
+// POST /faves -- CREATE new fave and redirect to /faves to display user faves
 app.post('/favorites', async (req,res) => {
     try {
         const [fave, faveCreated] = await db.fave.findOrCreate({
@@ -107,16 +107,8 @@ app.post('/favorites', async (req,res) => {
 app.delete('/favorites/:id', async (req,res) => {
     try {
 
-         const grabUser = await db.user.findOne({
-            where: { email: res.locals.user.email }
-        })
-        // const deleteFave = await db.fave.destroy({
-        //     where: { id: req.params.id }
-        // })
-        const deleteUserFaves = await db.user_faves.destroy({
-            where: { faveId: req.params.id,
-                     userId: grabUser.id}
-
+        const deleteUserFaves = await db.comment.destroy({
+            where: { id: req.params.id }
         })
        
         res.redirect('/favorites')
@@ -142,7 +134,25 @@ app.post('/favorites/:id', async (req,res) => {
         console.log(err)
     }
 })
+// delete comments
+app.delete('/favorites/:id', async (req,res) => {
+  try {
 
+       const grabUser = await db.user.findOne({
+          where: { email: res.locals.user.email }
+      })
+      // once you set on your action <%= comment.id %> the id on your rout changes to that!
+      const deleteComment = await db.comment.destroy({
+          where: { commentId: req.params.id,
+                   userId: grabUser.id}
+
+      })
+     
+      res.redirect('/favorites')
+  } catch(err){
+      console.log(err)
+  }
+})
 // Controllers
 app.use('/users', require('./controllers/users'))
 

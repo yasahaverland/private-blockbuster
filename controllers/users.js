@@ -3,7 +3,9 @@ const router = express.Router()
 const db = require('../models')
 const crypto = require('crypto-js')
 const bcrypt = require('bcrypt')
+const methodOverride = require('method-override')
 
+router.use(methodOverride('_method'));
 // GET /users/new -- render a form to create a new user
 router.get('/new', (req, res) => {
     res.render('users/new.ejs')
@@ -97,15 +99,74 @@ router.get('/logout', (req, res) => {
     res.redirect('/')
 })
 
-router.get('/profile', (req, res) => {
+router.get('/profile', async (req, res) => {
     // if the user is not logged ... we need to redirect to the login form
-    if (!res.locals.user) {
+    try {
+        if (!res.locals.user) {
         res.redirect('/users/login?message=You must authenticate before you are authorized to view this resource.')
     // otherwise, show them their profile
     } else {
-        res.render('users/profile.ejs', {
-            user: res.locals.user
+
+        const displayProfiles = await db.profile.findAll()
+        res.render('users/profile.ejs', { user: res.locals.user, displayProfiles})
+    }
+    } catch(err) {
+        console.log(err)
+    }
+    
+})
+// create profile information
+router.post('/profile', async (req,res) => {
+    try {
+        const creatProfiles = await db.profile.findOrCreate({
+            where: {
+                img_icon: req.body.img_icon,
+                fove_movie_kid: req.body.fave_movie_kid,
+                fave_movie_alltimes: req.body.fave_movie_alltimes,
+                fave_quote: req.body.fave_quote,
+                userId: res.locals.user.id
+            }
         })
+        const user = await db.user.findOne({
+            where: {
+                id: res.locals.user.id
+            }
+        })
+        res.redirect('/users/profile')
+    } catch(err) {
+        console.log(err)
+    }
+})
+// delete profile information
+router.delete('/profile/:id', async (req,res) => {
+    try {
+  
+        // once you set on your action <%= comment.id %> the id on your rout changes to that!
+        const deleteProfile = await db.profile.destroy({
+            where: { id: req.params.id}
+  
+        })
+       
+        res.redirect('/users/profile')
+    } catch(err){
+        console.log(err)
+    }
+  })
+// UPDATE profile
+router.put('/profile/:id', async (req,res) => {
+    try {
+        const editProfile = await db.profile.update({
+                img_icon: req.body.img_icon,
+                fove_movie_kid: req.body.fave_movie_kid,
+                fave_movie_alltimes: req.body.fave_movie_alltimes,
+                fave_quote: req.body.fave_quote,
+                userId: res.locals.user.id
+        }, {
+            where: { id: req.params.id }
+        })
+        res.redirect('/users/profile')
+    } catch(err) {
+        console.log(err)
     }
 })
 

@@ -1,16 +1,46 @@
 <h1 class="faves-title">Saved Favorites</h1>    
 
-<div class="faves-elements">
+
 
 <% userFaves.forEach(fave => { %>
+<div class="faves-elements">
     <div class="movie-poster_box">
-        <h2><%= fave.title %></h2>
-       <div class="movie-poster" >
+            <h2><%= fave.title %></h2>
+        <div class="movie-poster" >
             <img src="<%= fave.poster %>" />
-       </div>
-        <a href="/details/<%= fave.imdbid %>">details</a>
+        </div>
+        <div class="details_button">
+            <a href="/details/<%= fave.imdbid %>">details</a>
+        </div>
+        <div class="delete">
+            <form method="POST" action="/favorites/<%= fave.id%>/?_method=DELETE">
+                <button type="submit">Delete</button>
+            </form>
+        </div>
     </div>
-        
+         
+    <div class="comments-section">
+
+        <div class="post-coments_box">
+                <% allComments.forEach(comment => { %>
+                    <% if (comment.faveId = fave.id) { %>
+                        
+                            <h3>Comment</h3>
+                            <div class="post-comment_username">
+                                <p> <%= comment.user_name %> </p>
+                            </div>
+                            <div class="post-comment_content">
+                                <p> <%= comment.content %> </p>
+                            </div>
+                            <div class="delete">
+                                <form method="POST" action="/favorites/<%= comment.id%>/?_method=DELETE">
+                                    <button type="submit">Delete</button>
+                                </form>
+                            </div>
+                    <% } %>
+                <% }) %>
+            </div>  
+
         <div class="comment-box">
             <h3>Add a new comment:</h3>
             <form method="POST" action="/favorites/<%= fave.id%>">
@@ -21,29 +51,12 @@
             </form>
         </div>
 
-    
-    <div class="post-coments_box">
-        <% allComments.forEach(comment => { %>
-            <% if (comment.faveId = fave.id) { %>
-                
-                    <h3>Comment</h3>
-                    <div class="post-comment_username">
-                        <p> <%= comment.user_name %> </p>
-                    </div>
-                    <div class="post-comment_content">
-                        <p> <%= comment.content %> </p>
-                    </div>
-                
-            <% } %>
-        <% }) %>
-    </div>    
-    <div class="delete">
-        <form method="POST" action="/favorites/<%= fave.id%>/?_method=DELETE">
-            <input type="submit" value="Delete" />
-        </form>
+        
+         
     </div>
+ </div>   
 <% }) %>  
-</div>
+
 
 
 
