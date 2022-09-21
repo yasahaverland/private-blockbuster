@@ -107,7 +107,7 @@ app.post('/favorites', async (req,res) => {
 app.delete('/favorites/:id', async (req,res) => {
     try {
 
-        const deleteUserFaves = await db.comment.destroy({
+        const deleteUserFaves = await db.fave.destroy({
             where: { id: req.params.id }
         })
        
