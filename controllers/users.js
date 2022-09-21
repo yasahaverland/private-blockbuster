@@ -121,7 +121,7 @@ router.post('/profile', async (req,res) => {
         const creatProfiles = await db.profile.findOrCreate({
             where: {
                 img_icon: req.body.img_icon,
-                fove_movie_kid: req.body.fave_movie_kid,
+                fove_movie_kid: req.body.fove_movie_kid,
                 fave_movie_alltimes: req.body.fave_movie_alltimes,
                 fave_quote: req.body.fave_quote,
                 userId: res.locals.user.id

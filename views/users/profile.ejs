@@ -5,40 +5,49 @@
 <% displayProfiles.forEach(profile => { %>
     <% if (profile.userId = user.id) { %>
         <h2>About you:</h2>
-
-        <div class="img_icon-box" >
-            <img src="<%= profile.img_icon %>" />
-        </div>
+        
         <div class="profile-content">
-            <p><%= profile.fave_movie_kid %></p>
-            <p><%= profile.fave_movie_alltimes %></p>
-            <p><%= profile.fave_quote %></p>
+        
+            <div class="img_icon-box" >
+                <img src="<%= profile.img_icon %>" />
+            </div>
+            <div class="profile-content_favorites">
+                <p>Favorite movie as a kid: <span><%= profile.fove_movie_kid %></span></p>
+                <p>Favorite movie of all timnes: <span><%= profile.fave_movie_alltimes %></span></p>
+                <p>Favorite movie quote: <span><%= profile.fave_quote %></span> </p>
+            </div>
         </div>
         <div class="delete">
             <form method="POST" action="/users/profile/<%= profile.id %>/?_method=DELETE">
                 <button type="submit">Delete</button>
             </form>
         </div> 
-       <div class="edit-profile_form">
-        <form method="POST" action="/users/profile/<%= profile.id%>/?_method=PUT">
-            <input type="text" name="img_icon" placeholder="paste an Image Url here to use as your icon...">
-            <input type="text" name="fave_movie_kid" placeholder="What is your favorite movie as a kid?">
-            <input type="text" name="fave_movie_alltimes" placeholder="What is your favorite movie all Times?">
-            <input type="text" name="fave_quote" placeholder="What is your favorite movie quote?">
-            <button class="comment__button" type="submit">Submit</button>
-        </form>
-    </div>
+
+        <div class="profile-form edit-profile">
+            <p>Eddit your Profile</p>
+            <form method="POST" action="/users/profile/<%= profile.id%>/?_method=PUT">
+                <input type="text" name="img_icon" placeholder="paste an Image Url here to use as your icon...">
+                <input type="text" name="fove_movie_kid" placeholder="What is your favorite movie as a kid?">
+                <input type="text" name="fave_movie_alltimes" placeholder="What is your favorite movie all Times?">
+                <input type="text" name="fave_quote" placeholder="What is your favorite movie quote?">
+                <button class="profile-form__button" type="submit">Submit</button>
+            </form>
+        </div>
+
     </div>
     <% } %>
 <% }) %>
    
-    <div class="create-profile_form">
+  
+
+    <div class="profile-form create-profile">
+        <p>Set up your Profile</p>
         <form method="POST" action="/users/profile">
-            <input type="text" name="img_icon" placeholder="paste an Image Url here to use as your icon...">
+            <input type="text" name="img_icon" placeholder="Paste an Image Url here to use as your icon...">
             <input type="text" name="fave_movie_kid" placeholder="What is your favorite movie as a kid?">
-            <input type="text" name="fave_movie_alltimes" placeholder="What is your favorite movie all Times?">
+            <input type="text" name="fave_movie_alltimes" placeholder="What is your favorite movie of all Times?">
             <input type="text" name="fave_quote" placeholder="What is your favorite movie quote?">
-            <button class="comment__button" type="submit">Submit</button>
+            <button class="profile-form__button" type="submit">Submit</button>
         </form>
     </div>
 </div>
