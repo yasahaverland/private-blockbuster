@@ -5,6 +5,10 @@ Your own Privete Blockbuster, an app where you can have that nolstalgic feeling 
 
 Search movies titles, select and save your favorite movies, write comments and set up a profile.
 
+## Live Link
+
+https://private-blockbuster-yasahaverland.koyeb.app/
+
 ## API 
 OMDB API
 

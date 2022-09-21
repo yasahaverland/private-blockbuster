@@ -511,21 +511,18 @@ h1 {
 
 /* responsove disign */
 
-@media (max-width: 900px) {
+@media (max-width: 850px) {
     body {
         background-image: url(https://i.imgur.com/CClvQfP.png);
         background-size: cover;
-        height: 100vh
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
     }
 /* nav bar */
-    nav {
-
-    }
-
-    nav {
-
-    }
-    .menu-items {
+    .menu li {
         display: none;
         flex-direction: column;
         gap: 2rem;
@@ -544,9 +541,80 @@ h1 {
         border: none;
         color: white; 
     }
- 
+    
+    .hb-menu:active .menu-items li {
+        display: flex;
+    }
 /* profile => favorites */
     .submenu1 {
 
     }
+}
+
+/* home */
+
+h1 {
+    margin-top: 20px;
+    font-size: 2rem;
+}
+.movie-search {
+    display:flex;
+    align-self: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 40px;
+    width: 20rem;
+    height: 5rem;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+#search-bar {
+    margin-left: -30px;
+    width: 15rem;
+}
+
+.logo-box img {
+    width: 200px;
+    height: 100px;
+}
+
+/* results */
+
+.movie-results {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* favorites */
+
+.faves-elements {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+
+    margin-top: 5rem;
+}
+
+/* profile */
+
+.about-you {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    height: fit-content;
+}
+
+.about-you * {
+    margin: 0 auto;
+}
+
+.profile-form {
+    width: 100%;
+    height: 400px;
 }
