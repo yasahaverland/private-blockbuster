@@ -63,9 +63,8 @@ OMDB API
 * As a user I want to have my password protected
 * As a user I want to be able to search for movies
 * As a user I want to be able to add to my favorite's colection
-* As a user I want to write comments and reviews
+* As a user I want to write comments
 * As a non user I want to be able to search for movies
-* As a non user I want to be able to read the user's reviews about the movies
 
 ## MVP
 
@@ -74,7 +73,7 @@ OMDB API
 * Display all favorite movies in a colection 
 * Create a button to add the movies to favorite's colection on movie details
 * Add coments that will be privet to users
-* Add reviews that will be public for users and non users
+
 
 ## Wireframes
 ![ERD](./imgs/Slice%201.png)
