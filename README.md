@@ -1,7 +1,7 @@
 # private-blockbusters
 
 ## Project Idea
-Your own Privete Blockbuster, an app where you can have that nolstalgic feeling back of searching and saving your favorite movies in your own archive.
+Your own Private Blockbuster, an app where you can have that nolstalgic feeling back of searching and saving your favorite movies in your own archive.
 
 Search movies titles, select and save your favorite movies, write comments and set up a profile.
 
@@ -14,6 +14,19 @@ OMDB API
 
   axios.get(`http://www.omdbapi.com/?s=${req.query.movieSearch}&apikey=${process.env.OMDB_API_KEY}`)
 
+## Installation Instruction
+* Fork and clone this repo to your local directory
+* In your terminal run ` npm i -y `
+* Run `touch .env `and type in the following code in the .env file:
+``` ENC_SECRET='secret' ```
+``` API_KEY=******* ``` 
+* Replace 'secret' with any string you would like, if needed or prefered
+* Go to https://www.omdbapi.com/apikey.aspx and login to generate your own API key then replace the above *** with your API key;
+* Setup your database (this app has six existing models);
+  * Run `createdb movie_tracker` to create the database;
+  * Run `sequelize db:migrate` to run migrations;
+* Run `npx nodemon` to start your application;
+* Go to http://localhost:3001/ in any browser to acces the web app page.
 ## ERD's
 
 ![ERD](./imgs/Screen%20Shot%202022-09-13%20at%202.44.11%20PM.png)
