@@ -7,7 +7,7 @@ Search movies titles, select and save your favorite movies, write comments and s
 
 ## Live Link
 
-https://private-blockbuster-yasahaverland.koyeb.app/
+https://private-blockbuster.fly.dev/
 
 ## API 
 OMDB API
