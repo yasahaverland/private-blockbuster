@@ -26,7 +26,7 @@ OMDB API
   * Run `createdb private-blockbuster` to create the database;
   * Run `sequelize db:migrate` to run migrations;
 * Run `nodemon` to start your application;
-* Go to http://localhost:3001/ in any browser to acces the web app page.
+* Go to http://localhost:3001/ on your browser to acces the web app page.
 ## ERD's
 
 ![ERD](./imgs/Screen%20Shot%202022-09-13%20at%202.44.11%20PM.png)
