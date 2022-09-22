@@ -23,9 +23,9 @@ OMDB API
 * Replace 'secret' with any string you would like, if needed or prefered
 * Go to https://www.omdbapi.com/apikey.aspx and login to generate your own API key then replace the above *** with your API key;
 * Setup your database (this app has six existing models);
-  * Run `createdb movie_tracker` to create the database;
+  * Run `createdb private-blockbuster` to create the database;
   * Run `sequelize db:migrate` to run migrations;
-* Run `npx nodemon` to start your application;
+* Run `nodemon` to start your application;
 * Go to http://localhost:3001/ in any browser to acces the web app page.
 ## ERD's
 
